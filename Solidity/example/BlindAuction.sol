@@ -58,6 +58,10 @@ contract BlindAuction {
 
         uint refund;
         for (uint i = 0; i < length; i++) {
+            // 数据位置可以说明数据是保存在内存中还是存储中，即storage还是memory
+            // 函数参数（包括返回的参数）的数据位置默认是memory
+            // 局部变量的数据位置默认是storage
+            // 状态变量的数据位置强制是storage
             Bid storage bid = bids[msg.sender][i];
             (uint value, bool fake, byte32 secret) = (_values[i], _fake[i], _secret[i]);
             if (bid.blindedBid != keccak256(value, fake, secret)) {

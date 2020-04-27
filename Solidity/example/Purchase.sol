@@ -69,6 +69,9 @@ contract Purchase {
 
         // 允许买房和卖方阻止付款
         buyer.transfer(value);
+        // 可以使用balance属性来查询一个地址的余额
+        // 也可以使用transfer函数向一个地址发送以太币
+        // send是transfer的低级版本。如果执行失败，当前合约不会因为异常而中止，会返回false
         seller.transfer(address(this).balance);
     }
 
