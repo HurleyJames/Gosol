@@ -13,12 +13,14 @@
 # }
 import hashlib
 import json
+import parser
 from time import time, sleep
 from urllib.parse import urlparse
 from uuid import uuid4
 
+import requests
 from flask import Flask, jsonify, request
-
+from argparse import ArgumentParser
 
 class Blockchain:
 
@@ -38,6 +40,51 @@ class Blockchain:
         parsed_url = urlparse(address)
         self.nodes.add(parsed_url.netloc)
 
+    def valid_chain(self, chain) -> bool:
+        """
+        判断链条是否是有效的链条
+        :param chain:
+        """
+        last_block = chain[0]
+        current_index = 1
+        while current_index < len(chain):
+            # 第0块是创世界块，它的哈希值是不用计算的
+            block = chain[current_index]
+
+            # 如果之间块的哈希望与计算出的哈希值不相等，则说明是一个虚假的链
+            if block['previous_hash'] != self.hash(last_block):
+                return False
+            # 如果不满足工作量证明（上一个块的工作量证明和现在的块的工作量证明）
+            if not self.valid_proof(last_block['proof'], block['proof']):
+                return False
+
+            last_block = block
+            current_index += 1
+
+        return True
+
+    def resolove_conflicts(self) -> bool:
+        neighbours = self.nodes
+
+        max_length = len(self.chain)
+        new_chain = None
+
+        for node in neighbours:
+            response = requests.get(f'http://{node}/chain')
+            if response.status_code == 200:
+                length = response.json()['length']
+                chain = response.json()['chain']
+
+                # 判断链条是有效的，即验证每一块的哈希值是否匹配
+                if length > max_length and self.valid_chain(chain):
+                    max_length = length
+                    new_chain = chain
+
+        if new_chain:
+            self.chain = new_chain
+            return True
+        return False
+
     def new_blcok(self, proof, previous_hash=None):
         block = {
             'index': len(self.chain) + 1,
@@ -54,7 +101,7 @@ class Blockchain:
 
         return block
 
-    def new_transactions(self, sender, recipient, amount):
+    def new_transactions(self, sender, recipient, amount) -> int:
         """
         新添加了一个交易
         :param sender: 发送者
@@ -123,7 +170,7 @@ def new_transaction():
     if not all(key in values for key in required):
         return "Missing values", 400
 
-    blockchain.new_transactions(values['sender'],
+    index = blockchain.new_transactions(values['sender'],
                                 values['recipient'],
                                 values['amount'])
 
@@ -185,5 +232,30 @@ def register_nodes():
     return jsonify(response), 201
 
 
+@app.route('/nodes/resolve', methods=['GET'])
+def consensus():
+    is_replace = blockchain.resolove_conflicts()
+
+    if is_replace:
+        response = {
+            'message': 'Our chain was replaced',
+            'new_chain': blockchain.chain
+        }
+    else:
+        response = {
+            'message': 'Our chain is authoritative',
+            'new_chain': blockchain.chain
+        }
+
+    return jsonify(response), 200
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # 每一个端口可以运行不同的服务器，充当不同的节点
+    parser = ArgumentParser()
+    # 输入命令时加上端口 -p --port 5001
+    parser.add_argument('-p', '--port', default=5000, type=int, help='port to listen to')
+    args = parser.parse_args()
+    port = args.port
+
+    app.run(host='0.0.0.0', port=port)
