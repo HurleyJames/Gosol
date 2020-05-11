@@ -49,7 +49,7 @@ contract Register is priced, owned {
 
 contract Mutex {
     bool locked;
-    // 如果同一个函数有多个修饰器，它们之间以空格隔开，修饰器会依次检查执行
+    // 如果同一个函数有多个修饰器，它们之间以空格隔开，修饰器会依次检查
     modifier noReentrancy() {
         require(!locked);
         locked = true;
