@@ -10,11 +10,11 @@ contract TestSmartDegree {
   function testAddDegree() public {
     SmartDegree smartDegree = new SmartDegree();
 
-    bytes32 studentId = 0x000000000000000000000000000000000000000000000000000000000000001;
-	  bytes32 degreeHash = 0xa7834034bd059ecf00b0661f88f1e7242450bf1951c1e76803e80ce4182e2e9c;
-	  bytes32 expected = 0xa7834034bd059ecf00b0661f88f1e7242450bf1951c1e76803e80ce4182e2e9c;
+    bytes32 studentId = 0x00000000000000000000000000000000000000000000000000000000000001;
+	bytes32 degreeHash = 0xa7834034bd059ecf00b0661f88f1e7242450bf1951c1e76803e80ce4182e2e9c;
+	bytes32 expected = 0xa7834034bd059ecf00b0661f88f1e7242450bf1951c1e76803e80ce4182e2e9c;
 
-	  smartDegree.deliverDegree(studentId, degreeHash);
+	smartDegree.deliverDegree(studentId, degreeHash);
 
     Assert.equal(smartDegree.getDegreeHash(studentId), expected, "degree hash should be equal");
   }

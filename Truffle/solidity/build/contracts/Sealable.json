@@ -1,0 +1,3039 @@
+{
+  "contractName": "Sealable",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "sealValue",
+          "type": "bytes32"
+        }
+      ],
+      "name": "LogNewSealRecorded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipRenounced",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        }
+      ],
+      "name": "WhitelistedAddressAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        }
+      ],
+      "name": "WhitelistedAddressRemoved",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        }
+      ],
+      "name": "addAddressToWhitelist",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "addrs",
+          "type": "address[]"
+        }
+      ],
+      "name": "addAddressesToWhitelist",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        }
+      ],
+      "name": "removeAddressFromWhitelist",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "addrs",
+          "type": "address[]"
+        }
+      ],
+      "name": "removeAddressesFromWhitelist",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "whitelist",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "delegate",
+          "type": "address"
+        }
+      ],
+      "name": "registerDelegate",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "sealValue",
+          "type": "bytes32"
+        }
+      ],
+      "name": "recordSeal",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getSeal",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "sealValue",
+          "type": "bytes32"
+        }
+      ],
+      "name": "verifySeal",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"sealValue\",\"type\":\"bytes32\"}],\"name\":\"LogNewSealRecorded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"}],\"name\":\"OwnershipRenounced\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"WhitelistedAddressAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"WhitelistedAddressRemoved\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"addAddressToWhitelist\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"addrs\",\"type\":\"address[]\"}],\"name\":\"addAddressesToWhitelist\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"getSeal\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"sealValue\",\"type\":\"bytes32\"}],\"name\":\"recordSeal\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegate\",\"type\":\"address\"}],\"name\":\"registerDelegate\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"removeAddressFromWhitelist\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"addrs\",\"type\":\"address[]\"}],\"name\":\"removeAddressesFromWhitelist\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"sealValue\",\"type\":\"bytes32\"}],\"name\":\"verifySeal\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"whitelist\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Sealable allows users to submit a seal as a proof of integrity of anything.The seal can be for example the hash of a document.See the tests Sealable.test.js for specific usage examples.\",\"methods\":{\"addAddressToWhitelist(address)\":{\"details\":\"add an address to the whitelist\",\"params\":{\"addr\":\"address\"},\"return\":\"true if the address was added to the whitelist, false if the address was already in the whitelist\"},\"addAddressesToWhitelist(address[])\":{\"details\":\"add addresses to the whitelist\",\"params\":{\"addrs\":\"addresses\"},\"return\":\"true if at least one address was added to the whitelist, false if all addresses were already in the whitelist\"},\"constructor\":{\"details\":\"Create a new Sealable Contract.\"},\"getSeal(bytes32)\":{\"params\":{\"id\":\"of the seal\"},\"return\":\"the seal\"},\"recordSeal(bytes32,bytes32)\":{\"details\":\"Record a new seal in the registry.\"},\"registerDelegate(address)\":{\"details\":\"Register a new delegate authorized to add seal\"},\"removeAddressFromWhitelist(address)\":{\"details\":\"remove an address from the whitelist\",\"params\":{\"addr\":\"address\"},\"return\":\"true if the address was removed from the whitelist, false if the address wasn't in the whitelist in the first place\"},\"removeAddressesFromWhitelist(address[])\":{\"details\":\"remove addresses from the whitelist\",\"params\":{\"addrs\":\"addresses\"},\"return\":\"true if at least one address was removed from the whitelist, false if all addresses weren't in the whitelist in the first place\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.     * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"verifySeal(bytes32,bytes32)\":{\"params\":{\"id\":\"of the seal\",\"sealValue\":\"value\"}}},\"title\":\"Sealable\"},\"userdoc\":{\"methods\":{\"getSeal(bytes32)\":{\"notice\":\"Use this getter function to access the seal value\"},\"verifySeal(bytes32,bytes32)\":{\"notice\":\"Use this method to verify a seal validity\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Sealable.sol\":\"Sealable\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Ownable.sol\":{\"keccak256\":\"0x8a8741aca9403ae5a295c8f7f0f5c8ecd30ae23d39c7c9db70879ced039a8c05\",\"urls\":[\"bzz-raw://8a3fdd3daebdc2c893e73039fef6032873777d8e2c4bc8ce448c58c6f9872e0d\",\"dweb:/ipfs/QmWbkhdiDrJ3L9iAaQELCDMVXwaPEfobdZdZ6CNbBqa9Jx\"]},\"/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Sealable.sol\":{\"keccak256\":\"0x5254361000e3c0a34ff659c6611d428bb071db3a3ca18a8229760f526ce1f6ff\",\"urls\":[\"bzz-raw://c27f2977c026b9739489c94907af18ee2bb05fd6a368c56912f48c47a64cae6f\",\"dweb:/ipfs/QmTDtubXA7tg9CUJGUq9Cp2XAmfS9iWXVsU8ajUag5KUN2\"]},\"/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Whitelist.sol\":{\"keccak256\":\"0xba19bed85deb8df27e9da3725048db6a1f3e121a0b2434cf396dcca9d2206b74\",\"urls\":[\"bzz-raw://05bf9b747bcc6edde7e9fb29574613b18269b347c0d91580def2e7c87bf2220d\",\"dweb:/ipfs/QmbyHMdhgRdF8jfmKwCqkgsRW2fCaxKPapmnhyaKwHHiK8\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506100603361006660201b60201c565b506101d6565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146100c157600080fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff166101d15760018060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055507fd1bba68c128cc3f427e5831b3c6f99f480b6efa6b9e80c757768f6124158cc3f82604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1600190505b919050565b610e32806101e56000396000f3fe608060405234801561001057600080fd5b50600436106100b45760003560e01c8063715018a611610071578063715018a61461030b5780637b9417c8146103155780638da5cb5b146103715780639b19251a146103bb578063e2ec6ec314610417578063f2fde38b146104e7576100b4565b8063097b3779146100b957806314a9a77d146100f15780631d6c999d1461014157806324953eaa1461019d578063286dd3f51461026d57806365e60550146102c9575b600080fd5b6100ef600480360360408110156100cf57600080fd5b81019080803590602001909291908035906020019092919050505061052b565b005b6101276004803603604081101561010757600080fd5b810190808035906020019092919080359060200190929190505050610607565b604051808215151515815260200191505060405180910390f35b6101836004803603602081101561015757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061062a565b604051808215151515815260200191505060405180910390f35b610253600480360360208110156101b357600080fd5b81019080803590602001906401000000008111156101d057600080fd5b8201836020820111156101e257600080fd5b8035906020019184602083028401116401000000008311171561020457600080fd5b919080806020026020016040519081016040528093929190818152602001838360200280828437600081840152601f19601f820116905080830192505050505050509192919290505050610695565b604051808215151515815260200191505060405180910390f35b6102af6004803603602081101561028357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610738565b604051808215151515815260200191505060405180910390f35b6102f5600480360360208110156102df57600080fd5b81019080803590602001909291905050506108aa565b6040518082815260200191505060405180910390f35b6103136108ca565b005b6103576004803603602081101561032b57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506109e2565b604051808215151515815260200191505060405180910390f35b610379610b52565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6103fd600480360360208110156103d157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610b77565b604051808215151515815260200191505060405180910390f35b6104cd6004803603602081101561042d57600080fd5b810190808035906020019064010000000081111561044a57600080fd5b82018360208201111561045c57600080fd5b8035906020019184602083028401116401000000008311171561047e57600080fd5b919080806020026020016040519081016040528093929190818152602001838360200280828437600081840152601f19601f820116905080830192505050505050509192919290505050610b97565b604051808215151515815260200191505060405180910390f35b610529600480360360208110156104fd57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c3a565b005b600160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff1661058157600080fd5b6000801b6002600084815260200190815260200160002060000154146105a657600080fd5b604051806020016040528082815250600260008481526020019081526020016000206000820151816000015590505080827f415629c7680cfd093ccc93831c55a06e0e60f4fbbc9479975d3ba612f17eff2960405160405180910390a35050565b600081600260008581526020019081526020016000206000015414905092915050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461068557600080fd5b61068e826109e2565b9050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146106f057600080fd5b60008090505b82518110156107325761071b83828151811061070e57fe5b6020026020010151610738565b1561072557600191505b80806001019150506106f6565b50919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461079357600080fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16156108a5576000600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055507ff1abf01a1043b7c244d128e8595cf0c1d10743b022b03a02dffd8ca3bf729f5a82604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1600190505b919050565b600060026000838152602001908152602001600020600001549050919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461092357600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610a3d57600080fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16610b4d5760018060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055507fd1bba68c128cc3f427e5831b3c6f99f480b6efa6b9e80c757768f6124158cc3f82604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1600190505b919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60016020528060005260406000206000915054906101000a900460ff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610bf257600080fd5b60008090505b8251811015610c3457610c1d838281518110610c1057fe5b60200260200101516109e2565b15610c2757600191505b8080600101915050610bf8565b50919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610c9357600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610d19576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610dd86026913960400191505060405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a265627a7a72315820cf69340cabe7cf8182e48011afb9f2decd45470c43067ca551fcfcf4af32dc9464736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100b45760003560e01c8063715018a611610071578063715018a61461030b5780637b9417c8146103155780638da5cb5b146103715780639b19251a146103bb578063e2ec6ec314610417578063f2fde38b146104e7576100b4565b8063097b3779146100b957806314a9a77d146100f15780631d6c999d1461014157806324953eaa1461019d578063286dd3f51461026d57806365e60550146102c9575b600080fd5b6100ef600480360360408110156100cf57600080fd5b81019080803590602001909291908035906020019092919050505061052b565b005b6101276004803603604081101561010757600080fd5b810190808035906020019092919080359060200190929190505050610607565b604051808215151515815260200191505060405180910390f35b6101836004803603602081101561015757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061062a565b604051808215151515815260200191505060405180910390f35b610253600480360360208110156101b357600080fd5b81019080803590602001906401000000008111156101d057600080fd5b8201836020820111156101e257600080fd5b8035906020019184602083028401116401000000008311171561020457600080fd5b919080806020026020016040519081016040528093929190818152602001838360200280828437600081840152601f19601f820116905080830192505050505050509192919290505050610695565b604051808215151515815260200191505060405180910390f35b6102af6004803603602081101561028357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610738565b604051808215151515815260200191505060405180910390f35b6102f5600480360360208110156102df57600080fd5b81019080803590602001909291905050506108aa565b6040518082815260200191505060405180910390f35b6103136108ca565b005b6103576004803603602081101561032b57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506109e2565b604051808215151515815260200191505060405180910390f35b610379610b52565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6103fd600480360360208110156103d157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610b77565b604051808215151515815260200191505060405180910390f35b6104cd6004803603602081101561042d57600080fd5b810190808035906020019064010000000081111561044a57600080fd5b82018360208201111561045c57600080fd5b8035906020019184602083028401116401000000008311171561047e57600080fd5b919080806020026020016040519081016040528093929190818152602001838360200280828437600081840152601f19601f820116905080830192505050505050509192919290505050610b97565b604051808215151515815260200191505060405180910390f35b610529600480360360208110156104fd57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c3a565b005b600160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff1661058157600080fd5b6000801b6002600084815260200190815260200160002060000154146105a657600080fd5b604051806020016040528082815250600260008481526020019081526020016000206000820151816000015590505080827f415629c7680cfd093ccc93831c55a06e0e60f4fbbc9479975d3ba612f17eff2960405160405180910390a35050565b600081600260008581526020019081526020016000206000015414905092915050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461068557600080fd5b61068e826109e2565b9050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146106f057600080fd5b60008090505b82518110156107325761071b83828151811061070e57fe5b6020026020010151610738565b1561072557600191505b80806001019150506106f6565b50919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461079357600080fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16156108a5576000600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055507ff1abf01a1043b7c244d128e8595cf0c1d10743b022b03a02dffd8ca3bf729f5a82604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1600190505b919050565b600060026000838152602001908152602001600020600001549050919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461092357600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610a3d57600080fd5b600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16610b4d5760018060008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055507fd1bba68c128cc3f427e5831b3c6f99f480b6efa6b9e80c757768f6124158cc3f82604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1600190505b919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60016020528060005260406000206000915054906101000a900460ff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610bf257600080fd5b60008090505b8251811015610c3457610c1d838281518110610c1057fe5b60200260200101516109e2565b15610c2757600191505b8080600101915050610bf8565b50919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610c9357600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415610d19576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610dd86026913960400191505060405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a265627a7a72315820cf69340cabe7cf8182e48011afb9f2decd45470c43067ca551fcfcf4af32dc9464736f6c63430005100032",
+  "sourceMap": "301:1346:5:-;;;570:71;8:9:-1;5:2;;;30:1;27;20:12;5:2;570:71:5;587:10:4;579:5;;:18;;;;;;;;;;;;;;;;;;601:33:5;623:10;601:21;;;:33;;:::i;:::-;;301:1346;;841:252:7;912:12;745:5:4;;;;;;;;;;;731:19;;:10;:19;;;723:28;;;;;;942:9:7;:15;952:4;942:15;;;;;;;;;;;;;;;;;;;;;;;;;937:149;;992:4;974:9;:15;984:4;974:15;;;;;;;;;;;;;;;;:22;;;;;;;;;;;;;;;;;;1016:29;1040:4;1016:29;;;;;;;;;;;;;;;;;;;;;;1070:4;1060:14;;937:149;841:252;;;:::o;301:1346:5:-;;;;;;;",
+  "deployedSourceMap": "301:1346:5:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;301:1346:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;930:225;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;930:225:5;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1515:130;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1515:130:5;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;722:139;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;722:139:5;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2356:280:7;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2356:280:7;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;2356:280:7;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;2356:280:7;;;;;;101:9:-1;95:2;81:12;77:21;67:8;63:36;60:51;39:11;25:12;22:29;11:108;8:2;;;132:1;129;122:12;8:2;2356:280:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;2356:280:7;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1840:259;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1840:259:7;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1287:98:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1287:98:5;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1111:135:4;;;:::i;:::-;;841:252:7;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;841:252:7;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;248:20:4;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;303:42:7;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;303:42:7;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1327:270;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1327:270:7;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1327:270:7;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1327:270:7;;;;;;101:9:-1;95:2;81:12;77:21;67:8;63:36;60:51;39:11;25:12;22:29;11:108;8:2;;;132:1;129;122:12;8:2;1327:270:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1327:270:7;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1395:230:4;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1395:230:4;;;;;;;;;;;;;;;;;;;:::i;:::-;;930:225:5;587:9:7;:21;597:10;587:21;;;;;;;;;;;;;;;;;;;;;;;;;579:30;;;;;;1049:3:5;1041:12;;1022:5;:9;1028:2;1022:9;;;;;;;;;;;:15;;;:31;1014:40;;;;;;1076:24;;;;;;;;1089:9;1076:24;;;1064:5;:9;1070:2;1064:9;;;;;;;;;;;:36;;;;;;;;;;;1138:9;1134:2;1115:33;;;;;;;;;;930:225;;:::o;1515:130::-;1587:4;1629:9;1610:5;:9;1616:2;1610:9;;;;;;;;;;;:15;;;:28;1603:35;;1515:130;;;;:::o;722:139::-;792:12;745:5:4;;;;;;;;;;;731:19;;:10;:19;;;723:28;;;;;;823:31:5;845:8;823:21;:31::i;:::-;816:38;;722:139;;;:::o;2356:280:7:-;2444:12;745:5:4;;;;;;;;;;;731:19;;:10;:19;;;723:28;;;;;;2474:9:7;2486:1;2474:13;;2469:160;2493:5;:12;2489:1;:16;2469:160;;;2531:36;2558:5;2564:1;2558:8;;;;;;;;;;;;;;2531:26;:36::i;:::-;2527:91;;;2598:4;2588:14;;2527:91;2507:3;;;;;;;2469:160;;;;2356:280;;;:::o;1840:259::-;1916:12;745:5:4;;;;;;;;;;;731:19;;:10;:19;;;723:28;;;;;;1945:9:7;:15;1955:4;1945:15;;;;;;;;;;;;;;;;;;;;;;;;;1941:151;;;1995:5;1977:9;:15;1987:4;1977:15;;;;;;;;;;;;;;;;:23;;;;;;;;;;;;;;;;;;2020:31;2046:4;2020:31;;;;;;;;;;;;;;;;;;;;;;2076:4;2066:14;;1941:151;1840:259;;;:::o;1287:98:5:-;1337:7;1363:5;:9;1369:2;1363:9;;;;;;;;;;;:15;;;1356:22;;1287:98;;;:::o;1111:135:4:-;745:5;;;;;;;;;;;731:19;;:10;:19;;;723:28;;;;;;1208:1;1172:39;;1193:5;;;;;;;;;;;1172:39;;;;;;;;;;;;1237:1;1221:5;;:18;;;;;;;;;;;;;;;;;;1111:135::o;841:252:7:-;912:12;745:5:4;;;;;;;;;;;731:19;;:10;:19;;;723:28;;;;;;942:9:7;:15;952:4;942:15;;;;;;;;;;;;;;;;;;;;;;;;;937:149;;992:4;974:9;:15;984:4;974:15;;;;;;;;;;;;;;;;:22;;;;;;;;;;;;;;;;;;1016:29;1040:4;1016:29;;;;;;;;;;;;;;;;;;;;;;1070:4;1060:14;;937:149;841:252;;;:::o;248:20:4:-;;;;;;;;;;;;;:::o;303:42:7:-;;;;;;;;;;;;;;;;;;;;;;:::o;1327:270::-;1410:12;745:5:4;;;;;;;;;;;731:19;;:10;:19;;;723:28;;;;;;1440:9:7;1452:1;1440:13;;1435:155;1459:5;:12;1455:1;:16;1435:155;;;1497:31;1519:5;1525:1;1519:8;;;;;;;;;;;;;;1497:21;:31::i;:::-;1493:86;;;1559:4;1549:14;;1493:86;1473:3;;;;;;;1435:155;;;;1327:270;;;:::o;1395:230:4:-;745:5;;;;;;;;;;;731:19;;:10;:19;;;723:28;;;;;;1495:1;1475:22;;:8;:22;;;;1467:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1583:8;1555:37;;1576:5;;;;;;;;;;;1555:37;;;;;;;;;;;;1610:8;1602:5;;:16;;;;;;;;;;;;;;;;;;1395:230;:::o",
+  "source": "pragma solidity >= 0.5.0 < 0.7.0;\n\nimport \"./Whitelist.sol\";\n\n/**\n * @title Sealable\n * @dev Sealable allows users to submit a seal as a proof of integrity of anything.\n * @dev The seal can be for example the hash of a document.\n * @dev See the tests Sealable.test.js for specific usage examples.\n */\ncontract Sealable is Whitelist {\n    struct Seal {\n        bytes32 value;\n    }\n\n    mapping (bytes32 => Seal) private seals;\n\n    event LogNewSealRecorded(bytes32 indexed id, bytes32 indexed sealValue);\n\n    /**\n     * @dev Create a new Sealable Contract.\n     */\n    constructor() public {\n        addAddressToWhitelist(msg.sender);\n    }\n\n    /**\n     * @dev Register a new delegate authorized to add seal\n     */\n    function registerDelegate(address delegate) onlyOwner public returns (bool success) {\n        return addAddressToWhitelist(delegate);\n    }\n\n    /**\n     * @dev Record a new seal in the registry.\n     */\n    function recordSeal(bytes32 id, bytes32 sealValue) public onlyWhitelisted {\n        require(seals[id].value == bytes32(0x0));\n        seals[id] = Seal({value: sealValue});\n        emit LogNewSealRecorded(id, sealValue);\n    }\n\n    /**\n     * Use this getter function to access the seal value\n     * @param id of the seal\n     * @return the seal\n     */\n    function getSeal(bytes32 id) public view returns (bytes32) {\n        return seals[id].value;\n    }\n\n    /**\n     * Use this method to verify a seal validity\n     * @param id of the seal\n     * @param sealValue value\n     */\n    function verifySeal(bytes32 id, bytes32 sealValue) public view returns (bool) {\n        return seals[id].value == sealValue;\n    }\n}\n",
+  "sourcePath": "/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Sealable.sol",
+  "ast": {
+    "absolutePath": "/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Sealable.sol",
+    "exportedSymbols": {
+      "Sealable": [
+        399
+      ]
+    },
+    "id": 400,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 295,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:33:5"
+      },
+      {
+        "absolutePath": "/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Whitelist.sol",
+        "file": "./Whitelist.sol",
+        "id": 296,
+        "nodeType": "ImportDirective",
+        "scope": 400,
+        "sourceUnit": 684,
+        "src": "35:25:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 297,
+              "name": "Whitelist",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 683,
+              "src": "322:9:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Whitelist_$683",
+                "typeString": "contract Whitelist"
+              }
+            },
+            "id": 298,
+            "nodeType": "InheritanceSpecifier",
+            "src": "322:9:5"
+          }
+        ],
+        "contractDependencies": [
+          293,
+          683
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Sealable\n@dev Sealable allows users to submit a seal as a proof of integrity of anything.\n@dev The seal can be for example the hash of a document.\n@dev See the tests Sealable.test.js for specific usage examples.",
+        "fullyImplemented": true,
+        "id": 399,
+        "linearizedBaseContracts": [
+          399,
+          683,
+          293
+        ],
+        "name": "Sealable",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Sealable.Seal",
+            "id": 301,
+            "members": [
+              {
+                "constant": false,
+                "id": 300,
+                "name": "value",
+                "nodeType": "VariableDeclaration",
+                "scope": 301,
+                "src": "360:13:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 299,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "360:7:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Seal",
+            "nodeType": "StructDefinition",
+            "scope": 399,
+            "src": "338:42:5",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 305,
+            "name": "seals",
+            "nodeType": "VariableDeclaration",
+            "scope": 399,
+            "src": "386:39:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+              "typeString": "mapping(bytes32 => struct Sealable.Seal)"
+            },
+            "typeName": {
+              "id": 304,
+              "keyType": {
+                "id": 302,
+                "name": "bytes32",
+                "nodeType": "ElementaryTypeName",
+                "src": "395:7:5",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "386:25:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                "typeString": "mapping(bytes32 => struct Sealable.Seal)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 303,
+                "name": "Seal",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 301,
+                "src": "406:4:5",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Seal_$301_storage_ptr",
+                  "typeString": "struct Sealable.Seal"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 311,
+            "name": "LogNewSealRecorded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 310,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 307,
+                  "indexed": true,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 311,
+                  "src": "457:18:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 306,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "457:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 309,
+                  "indexed": true,
+                  "name": "sealValue",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 311,
+                  "src": "477:25:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 308,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "477:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "456:47:5"
+            },
+            "src": "432:72:5"
+          },
+          {
+            "body": {
+              "id": 319,
+              "nodeType": "Block",
+              "src": "591:50:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 315,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 698,
+                          "src": "623:3:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 316,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "623:10:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 314,
+                      "name": "addAddressToWhitelist",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 583,
+                      "src": "601:21:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) returns (bool)"
+                      }
+                    },
+                    "id": 317,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "601:33:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 318,
+                  "nodeType": "ExpressionStatement",
+                  "src": "601:33:5"
+                }
+              ]
+            },
+            "documentation": "@dev Create a new Sealable Contract.",
+            "id": 320,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 312,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "581:2:5"
+            },
+            "returnParameters": {
+              "id": 313,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "591:0:5"
+            },
+            "scope": 399,
+            "src": "570:71:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 333,
+              "nodeType": "Block",
+              "src": "806:55:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 330,
+                        "name": "delegate",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 322,
+                        "src": "845:8:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 329,
+                      "name": "addAddressToWhitelist",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 583,
+                      "src": "823:21:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) returns (bool)"
+                      }
+                    },
+                    "id": 331,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "823:31:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 328,
+                  "id": 332,
+                  "nodeType": "Return",
+                  "src": "816:38:5"
+                }
+              ]
+            },
+            "documentation": "@dev Register a new delegate authorized to add seal",
+            "id": 334,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 325,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 324,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 247,
+                  "src": "766:9:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "766:9:5"
+              }
+            ],
+            "name": "registerDelegate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 323,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 322,
+                  "name": "delegate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 334,
+                  "src": "748:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 321,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "748:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "747:18:5"
+            },
+            "returnParameters": {
+              "id": 328,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 327,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 334,
+                  "src": "792:12:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 326,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "792:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "791:14:5"
+            },
+            "scope": 399,
+            "src": "722:139:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 367,
+              "nodeType": "Block",
+              "src": "1004:151:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        "id": 351,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 344,
+                              "name": "seals",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 305,
+                              "src": "1022:5:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                                "typeString": "mapping(bytes32 => struct Sealable.Seal storage ref)"
+                              }
+                            },
+                            "id": 346,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 345,
+                              "name": "id",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 336,
+                              "src": "1028:2:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "1022:9:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Seal_$301_storage",
+                              "typeString": "struct Sealable.Seal storage ref"
+                            }
+                          },
+                          "id": 347,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 300,
+                          "src": "1022:15:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "307830",
+                              "id": 349,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1049:3:5",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0x0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 348,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1041:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_bytes32_$",
+                              "typeString": "type(bytes32)"
+                            },
+                            "typeName": "bytes32"
+                          },
+                          "id": 350,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1041:12:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "src": "1022:31:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 343,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        701,
+                        702
+                      ],
+                      "referencedDeclaration": 701,
+                      "src": "1014:7:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 352,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1014:40:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 353,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1014:40:5"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 360,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 354,
+                        "name": "seals",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 305,
+                        "src": "1064:5:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                          "typeString": "mapping(bytes32 => struct Sealable.Seal storage ref)"
+                        }
+                      },
+                      "id": 356,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 355,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 336,
+                        "src": "1070:2:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1064:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Seal_$301_storage",
+                        "typeString": "struct Sealable.Seal storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 358,
+                          "name": "sealValue",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 338,
+                          "src": "1089:9:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        ],
+                        "id": 357,
+                        "name": "Seal",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 301,
+                        "src": "1076:4:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_Seal_$301_storage_ptr_$",
+                          "typeString": "type(struct Sealable.Seal storage pointer)"
+                        }
+                      },
+                      "id": 359,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [
+                        "value"
+                      ],
+                      "nodeType": "FunctionCall",
+                      "src": "1076:24:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Seal_$301_memory",
+                        "typeString": "struct Sealable.Seal memory"
+                      }
+                    },
+                    "src": "1064:36:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Seal_$301_storage",
+                      "typeString": "struct Sealable.Seal storage ref"
+                    }
+                  },
+                  "id": 361,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1064:36:5"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 363,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 336,
+                        "src": "1134:2:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 364,
+                        "name": "sealValue",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 338,
+                        "src": "1138:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 362,
+                      "name": "LogNewSealRecorded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 311,
+                      "src": "1115:18:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes32_$returns$__$",
+                        "typeString": "function (bytes32,bytes32)"
+                      }
+                    },
+                    "id": 365,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1115:33:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 366,
+                  "nodeType": "EmitStatement",
+                  "src": "1110:38:5"
+                }
+              ]
+            },
+            "documentation": "@dev Record a new seal in the registry.",
+            "id": 368,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 341,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 340,
+                  "name": "onlyWhitelisted",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 553,
+                  "src": "988:15:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "988:15:5"
+              }
+            ],
+            "name": "recordSeal",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 339,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 336,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 368,
+                  "src": "950:10:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 335,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "950:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 338,
+                  "name": "sealValue",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 368,
+                  "src": "962:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 337,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "962:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "949:31:5"
+            },
+            "returnParameters": {
+              "id": 342,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1004:0:5"
+            },
+            "scope": 399,
+            "src": "930:225:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 380,
+              "nodeType": "Block",
+              "src": "1346:39:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 375,
+                        "name": "seals",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 305,
+                        "src": "1363:5:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                          "typeString": "mapping(bytes32 => struct Sealable.Seal storage ref)"
+                        }
+                      },
+                      "id": 377,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 376,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 370,
+                        "src": "1369:2:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "1363:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Seal_$301_storage",
+                        "typeString": "struct Sealable.Seal storage ref"
+                      }
+                    },
+                    "id": 378,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "value",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 300,
+                    "src": "1363:15:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "functionReturnParameters": 374,
+                  "id": 379,
+                  "nodeType": "Return",
+                  "src": "1356:22:5"
+                }
+              ]
+            },
+            "documentation": "Use this getter function to access the seal value\n@param id of the seal\n@return the seal",
+            "id": 381,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSeal",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 371,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 370,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 381,
+                  "src": "1304:10:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 369,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1304:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1303:12:5"
+            },
+            "returnParameters": {
+              "id": 374,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 373,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 381,
+                  "src": "1337:7:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 372,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1337:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1336:9:5"
+            },
+            "scope": 399,
+            "src": "1287:98:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 397,
+              "nodeType": "Block",
+              "src": "1593:52:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    },
+                    "id": 395,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 390,
+                          "name": "seals",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 305,
+                          "src": "1610:5:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                            "typeString": "mapping(bytes32 => struct Sealable.Seal storage ref)"
+                          }
+                        },
+                        "id": 392,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 391,
+                          "name": "id",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 383,
+                          "src": "1616:2:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1610:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Seal_$301_storage",
+                          "typeString": "struct Sealable.Seal storage ref"
+                        }
+                      },
+                      "id": 393,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "value",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 300,
+                      "src": "1610:15:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "id": 394,
+                      "name": "sealValue",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 385,
+                      "src": "1629:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "src": "1610:28:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 389,
+                  "id": 396,
+                  "nodeType": "Return",
+                  "src": "1603:35:5"
+                }
+              ]
+            },
+            "documentation": "Use this method to verify a seal validity\n@param id of the seal\n@param sealValue value",
+            "id": 398,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifySeal",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 386,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 383,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 398,
+                  "src": "1535:10:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 382,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1535:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 385,
+                  "name": "sealValue",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 398,
+                  "src": "1547:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 384,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1547:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1534:31:5"
+            },
+            "returnParameters": {
+              "id": 389,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 388,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 398,
+                  "src": "1587:4:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 387,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1587:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1586:6:5"
+            },
+            "scope": 399,
+            "src": "1515:130:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 400,
+        "src": "301:1346:5"
+      }
+    ],
+    "src": "0:1648:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Sealable.sol",
+    "exportedSymbols": {
+      "Sealable": [
+        399
+      ]
+    },
+    "id": 400,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 295,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:33:5"
+      },
+      {
+        "absolutePath": "/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/Whitelist.sol",
+        "file": "./Whitelist.sol",
+        "id": 296,
+        "nodeType": "ImportDirective",
+        "scope": 400,
+        "sourceUnit": 684,
+        "src": "35:25:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 297,
+              "name": "Whitelist",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 683,
+              "src": "322:9:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Whitelist_$683",
+                "typeString": "contract Whitelist"
+              }
+            },
+            "id": 298,
+            "nodeType": "InheritanceSpecifier",
+            "src": "322:9:5"
+          }
+        ],
+        "contractDependencies": [
+          293,
+          683
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Sealable\n@dev Sealable allows users to submit a seal as a proof of integrity of anything.\n@dev The seal can be for example the hash of a document.\n@dev See the tests Sealable.test.js for specific usage examples.",
+        "fullyImplemented": true,
+        "id": 399,
+        "linearizedBaseContracts": [
+          399,
+          683,
+          293
+        ],
+        "name": "Sealable",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Sealable.Seal",
+            "id": 301,
+            "members": [
+              {
+                "constant": false,
+                "id": 300,
+                "name": "value",
+                "nodeType": "VariableDeclaration",
+                "scope": 301,
+                "src": "360:13:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 299,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "360:7:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Seal",
+            "nodeType": "StructDefinition",
+            "scope": 399,
+            "src": "338:42:5",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 305,
+            "name": "seals",
+            "nodeType": "VariableDeclaration",
+            "scope": 399,
+            "src": "386:39:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+              "typeString": "mapping(bytes32 => struct Sealable.Seal)"
+            },
+            "typeName": {
+              "id": 304,
+              "keyType": {
+                "id": 302,
+                "name": "bytes32",
+                "nodeType": "ElementaryTypeName",
+                "src": "395:7:5",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "386:25:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                "typeString": "mapping(bytes32 => struct Sealable.Seal)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 303,
+                "name": "Seal",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 301,
+                "src": "406:4:5",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Seal_$301_storage_ptr",
+                  "typeString": "struct Sealable.Seal"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 311,
+            "name": "LogNewSealRecorded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 310,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 307,
+                  "indexed": true,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 311,
+                  "src": "457:18:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 306,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "457:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 309,
+                  "indexed": true,
+                  "name": "sealValue",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 311,
+                  "src": "477:25:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 308,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "477:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "456:47:5"
+            },
+            "src": "432:72:5"
+          },
+          {
+            "body": {
+              "id": 319,
+              "nodeType": "Block",
+              "src": "591:50:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 315,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 698,
+                          "src": "623:3:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 316,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "623:10:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 314,
+                      "name": "addAddressToWhitelist",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 583,
+                      "src": "601:21:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) returns (bool)"
+                      }
+                    },
+                    "id": 317,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "601:33:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 318,
+                  "nodeType": "ExpressionStatement",
+                  "src": "601:33:5"
+                }
+              ]
+            },
+            "documentation": "@dev Create a new Sealable Contract.",
+            "id": 320,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 312,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "581:2:5"
+            },
+            "returnParameters": {
+              "id": 313,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "591:0:5"
+            },
+            "scope": 399,
+            "src": "570:71:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 333,
+              "nodeType": "Block",
+              "src": "806:55:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 330,
+                        "name": "delegate",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 322,
+                        "src": "845:8:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 329,
+                      "name": "addAddressToWhitelist",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 583,
+                      "src": "823:21:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) returns (bool)"
+                      }
+                    },
+                    "id": 331,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "823:31:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 328,
+                  "id": 332,
+                  "nodeType": "Return",
+                  "src": "816:38:5"
+                }
+              ]
+            },
+            "documentation": "@dev Register a new delegate authorized to add seal",
+            "id": 334,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 325,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 324,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 247,
+                  "src": "766:9:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "766:9:5"
+              }
+            ],
+            "name": "registerDelegate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 323,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 322,
+                  "name": "delegate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 334,
+                  "src": "748:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 321,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "748:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "747:18:5"
+            },
+            "returnParameters": {
+              "id": 328,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 327,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 334,
+                  "src": "792:12:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 326,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "792:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "791:14:5"
+            },
+            "scope": 399,
+            "src": "722:139:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 367,
+              "nodeType": "Block",
+              "src": "1004:151:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        "id": 351,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 344,
+                              "name": "seals",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 305,
+                              "src": "1022:5:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                                "typeString": "mapping(bytes32 => struct Sealable.Seal storage ref)"
+                              }
+                            },
+                            "id": 346,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 345,
+                              "name": "id",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 336,
+                              "src": "1028:2:5",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "1022:9:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Seal_$301_storage",
+                              "typeString": "struct Sealable.Seal storage ref"
+                            }
+                          },
+                          "id": 347,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 300,
+                          "src": "1022:15:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "307830",
+                              "id": 349,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1049:3:5",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0x0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 348,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1041:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_bytes32_$",
+                              "typeString": "type(bytes32)"
+                            },
+                            "typeName": "bytes32"
+                          },
+                          "id": 350,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1041:12:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "src": "1022:31:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 343,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        701,
+                        702
+                      ],
+                      "referencedDeclaration": 701,
+                      "src": "1014:7:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 352,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1014:40:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 353,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1014:40:5"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 360,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 354,
+                        "name": "seals",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 305,
+                        "src": "1064:5:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                          "typeString": "mapping(bytes32 => struct Sealable.Seal storage ref)"
+                        }
+                      },
+                      "id": 356,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 355,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 336,
+                        "src": "1070:2:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1064:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Seal_$301_storage",
+                        "typeString": "struct Sealable.Seal storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 358,
+                          "name": "sealValue",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 338,
+                          "src": "1089:9:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        ],
+                        "id": 357,
+                        "name": "Seal",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 301,
+                        "src": "1076:4:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_Seal_$301_storage_ptr_$",
+                          "typeString": "type(struct Sealable.Seal storage pointer)"
+                        }
+                      },
+                      "id": 359,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [
+                        "value"
+                      ],
+                      "nodeType": "FunctionCall",
+                      "src": "1076:24:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Seal_$301_memory",
+                        "typeString": "struct Sealable.Seal memory"
+                      }
+                    },
+                    "src": "1064:36:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Seal_$301_storage",
+                      "typeString": "struct Sealable.Seal storage ref"
+                    }
+                  },
+                  "id": 361,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1064:36:5"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 363,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 336,
+                        "src": "1134:2:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 364,
+                        "name": "sealValue",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 338,
+                        "src": "1138:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 362,
+                      "name": "LogNewSealRecorded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 311,
+                      "src": "1115:18:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes32_$returns$__$",
+                        "typeString": "function (bytes32,bytes32)"
+                      }
+                    },
+                    "id": 365,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1115:33:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 366,
+                  "nodeType": "EmitStatement",
+                  "src": "1110:38:5"
+                }
+              ]
+            },
+            "documentation": "@dev Record a new seal in the registry.",
+            "id": 368,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 341,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 340,
+                  "name": "onlyWhitelisted",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 553,
+                  "src": "988:15:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "988:15:5"
+              }
+            ],
+            "name": "recordSeal",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 339,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 336,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 368,
+                  "src": "950:10:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 335,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "950:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 338,
+                  "name": "sealValue",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 368,
+                  "src": "962:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 337,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "962:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "949:31:5"
+            },
+            "returnParameters": {
+              "id": 342,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1004:0:5"
+            },
+            "scope": 399,
+            "src": "930:225:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 380,
+              "nodeType": "Block",
+              "src": "1346:39:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 375,
+                        "name": "seals",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 305,
+                        "src": "1363:5:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                          "typeString": "mapping(bytes32 => struct Sealable.Seal storage ref)"
+                        }
+                      },
+                      "id": 377,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 376,
+                        "name": "id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 370,
+                        "src": "1369:2:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "1363:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Seal_$301_storage",
+                        "typeString": "struct Sealable.Seal storage ref"
+                      }
+                    },
+                    "id": 378,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "value",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 300,
+                    "src": "1363:15:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "functionReturnParameters": 374,
+                  "id": 379,
+                  "nodeType": "Return",
+                  "src": "1356:22:5"
+                }
+              ]
+            },
+            "documentation": "Use this getter function to access the seal value\n@param id of the seal\n@return the seal",
+            "id": 381,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSeal",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 371,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 370,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 381,
+                  "src": "1304:10:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 369,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1304:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1303:12:5"
+            },
+            "returnParameters": {
+              "id": 374,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 373,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 381,
+                  "src": "1337:7:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 372,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1337:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1336:9:5"
+            },
+            "scope": 399,
+            "src": "1287:98:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 397,
+              "nodeType": "Block",
+              "src": "1593:52:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    },
+                    "id": 395,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 390,
+                          "name": "seals",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 305,
+                          "src": "1610:5:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Seal_$301_storage_$",
+                            "typeString": "mapping(bytes32 => struct Sealable.Seal storage ref)"
+                          }
+                        },
+                        "id": 392,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 391,
+                          "name": "id",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 383,
+                          "src": "1616:2:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1610:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Seal_$301_storage",
+                          "typeString": "struct Sealable.Seal storage ref"
+                        }
+                      },
+                      "id": 393,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "value",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 300,
+                      "src": "1610:15:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "id": 394,
+                      "name": "sealValue",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 385,
+                      "src": "1629:9:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "src": "1610:28:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 389,
+                  "id": 396,
+                  "nodeType": "Return",
+                  "src": "1603:35:5"
+                }
+              ]
+            },
+            "documentation": "Use this method to verify a seal validity\n@param id of the seal\n@param sealValue value",
+            "id": 398,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifySeal",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 386,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 383,
+                  "name": "id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 398,
+                  "src": "1535:10:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 382,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1535:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 385,
+                  "name": "sealValue",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 398,
+                  "src": "1547:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 384,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1547:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1534:31:5"
+            },
+            "returnParameters": {
+              "id": 389,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 388,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 398,
+                  "src": "1587:4:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 387,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1587:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1586:6:5"
+            },
+            "scope": 399,
+            "src": "1515:130:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 400,
+        "src": "301:1346:5"
+      }
+    ],
+    "src": "0:1648:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-15T15:32:59.366Z",
+  "devdoc": {
+    "details": "Sealable allows users to submit a seal as a proof of integrity of anything.The seal can be for example the hash of a document.See the tests Sealable.test.js for specific usage examples.",
+    "methods": {
+      "addAddressToWhitelist(address)": {
+        "details": "add an address to the whitelist",
+        "params": {
+          "addr": "address"
+        },
+        "return": "true if the address was added to the whitelist, false if the address was already in the whitelist"
+      },
+      "addAddressesToWhitelist(address[])": {
+        "details": "add addresses to the whitelist",
+        "params": {
+          "addrs": "addresses"
+        },
+        "return": "true if at least one address was added to the whitelist, false if all addresses were already in the whitelist"
+      },
+      "constructor": {
+        "details": "Create a new Sealable Contract."
+      },
+      "getSeal(bytes32)": {
+        "params": {
+          "id": "of the seal"
+        },
+        "return": "the seal"
+      },
+      "recordSeal(bytes32,bytes32)": {
+        "details": "Record a new seal in the registry."
+      },
+      "registerDelegate(address)": {
+        "details": "Register a new delegate authorized to add seal"
+      },
+      "removeAddressFromWhitelist(address)": {
+        "details": "remove an address from the whitelist",
+        "params": {
+          "addr": "address"
+        },
+        "return": "true if the address was removed from the whitelist, false if the address wasn't in the whitelist in the first place"
+      },
+      "removeAddressesFromWhitelist(address[])": {
+        "details": "remove addresses from the whitelist",
+        "params": {
+          "addrs": "addresses"
+        },
+        "return": "true if at least one address was removed from the whitelist, false if all addresses weren't in the whitelist in the first place"
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.     * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      },
+      "verifySeal(bytes32,bytes32)": {
+        "params": {
+          "id": "of the seal",
+          "sealValue": "value"
+        }
+      }
+    },
+    "title": "Sealable"
+  },
+  "userdoc": {
+    "methods": {
+      "getSeal(bytes32)": {
+        "notice": "Use this getter function to access the seal value"
+      },
+      "verifySeal(bytes32,bytes32)": {
+        "notice": "Use this method to verify a seal validity"
+      }
+    }
+  }
+}

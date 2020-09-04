@@ -1,0 +1,394 @@
+{
+  "contractName": "IdCard",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/IdCard.sol\":\"IdCard\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/IdCard.sol\":{\"keccak256\":\"0xc28dd49e81f00393c1fee2fa25e53ccf35ba8bfb6f20b72d30e107ffd9bff0ac\",\"urls\":[\"bzz-raw://9eb8ad089e79844813c6e3ba04323fd2ce0c7317a74337a82c95509f6a25bc47\",\"dweb:/ipfs/QmS9FAzbPyQEsSZf5f3hX7e8y1Rvy9a6ctBcLdUGwEcP8c\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a723158206358ef67cd76084a89c52675d2d011d9bf5f2e560af613e30cef333458fe290c64736f6c63430005100032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a723158206358ef67cd76084a89c52675d2d011d9bf5f2e560af613e30cef333458fe290c64736f6c63430005100032",
+  "sourceMap": "35:215:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;35:215:1;;;;;;;",
+  "deployedSourceMap": "35:215:1:-;;;;;",
+  "source": "pragma solidity >= 0.5.0 < 0.7.0;\n\ncontract IdCard {\n\n    struct SimpleIdCard{\n        // Unique autoincremented ID\n        uint256 id;\n        bytes32 owner_name;\n        uint256 card_id;\n        bytes32 card_no;\n        bytes32 expire_date;\n    }\n}\n",
+  "sourcePath": "/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/IdCard.sol",
+  "ast": {
+    "absolutePath": "/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/IdCard.sol",
+    "exportedSymbols": {
+      "IdCard": [
+        104
+      ]
+    },
+    "id": 105,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 92,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:33:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 104,
+        "linearizedBaseContracts": [
+          104
+        ],
+        "name": "IdCard",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IdCard.SimpleIdCard",
+            "id": 103,
+            "members": [
+              {
+                "constant": false,
+                "id": 94,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "124:10:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 93,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "124:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 96,
+                "name": "owner_name",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "144:18:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 95,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "144:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 98,
+                "name": "card_id",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "172:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 97,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "172:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 100,
+                "name": "card_no",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "197:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 99,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "197:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 102,
+                "name": "expire_date",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "222:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 101,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "222:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "SimpleIdCard",
+            "nodeType": "StructDefinition",
+            "scope": 104,
+            "src": "58:190:1",
+            "visibility": "public"
+          }
+        ],
+        "scope": 105,
+        "src": "35:215:1"
+      }
+    ],
+    "src": "0:251:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/hurley/CrowdTaskManagementFrontend/SocialProof/solidity/contracts/IdCard.sol",
+    "exportedSymbols": {
+      "IdCard": [
+        104
+      ]
+    },
+    "id": 105,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 92,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:33:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 104,
+        "linearizedBaseContracts": [
+          104
+        ],
+        "name": "IdCard",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IdCard.SimpleIdCard",
+            "id": 103,
+            "members": [
+              {
+                "constant": false,
+                "id": 94,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "124:10:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 93,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "124:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 96,
+                "name": "owner_name",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "144:18:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 95,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "144:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 98,
+                "name": "card_id",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "172:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 97,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "172:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 100,
+                "name": "card_no",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "197:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 99,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "197:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 102,
+                "name": "expire_date",
+                "nodeType": "VariableDeclaration",
+                "scope": 103,
+                "src": "222:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 101,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "222:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "SimpleIdCard",
+            "nodeType": "StructDefinition",
+            "scope": 104,
+            "src": "58:190:1",
+            "visibility": "public"
+          }
+        ],
+        "scope": 105,
+        "src": "35:215:1"
+      }
+    ],
+    "src": "0:251:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-15T15:32:59.363Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
