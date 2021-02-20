@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/HurleyJames/ImageHosting/master/IMG_8085EE82665C-1.jpeg)
+![](https://i.loli.net/2021/02/21/E5GaXMw2FIrCslW.jpg)
 
 <center><h1>Golid</h1></center>
 
