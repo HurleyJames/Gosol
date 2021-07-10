@@ -1,7 +1,7 @@
 pragma solidity ^0.8.0;
 
 library SafeCast {
-  
+
   // 检查后，就直接用 uint128 转化
   function toUint128(uint256 value) internal pure returns (uint128) {
     require(value < 2**128, "SafeCast: value doesn\'t fit in 128 bits");

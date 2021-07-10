@@ -100,4 +100,14 @@ library SafeMath {
       return a % b;
     }
   }
+
+  function power(uint256 a, uint256 b) internal pure returns (uint256) {
+      if (a == 0) return 0;
+      if (b == 0) return 0;
+
+      uint256 c = 1;
+      for (uint256 i = 0; i < b; i++) {
+        c = mul(c, a);
+      }
+  }
 }
