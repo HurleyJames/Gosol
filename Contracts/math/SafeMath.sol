@@ -10,7 +10,7 @@ library SafeMath {
         return (false, 0);
       }
       return (true, c);
-    } 
+    }
   }
 
   // 减（安全）
